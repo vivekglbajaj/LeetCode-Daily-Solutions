@@ -34,6 +34,45 @@ Sort the Elements Greater than Pivot:
 
 Reverse the elements placed at the right side to maintain ascending order.
 
+Code Implementation
+
+class Solution {
+    public int[] pivotArray(int[] nums, int pivot) {
+        int n = nums.length;
+        int l = 0;
+        int r = n-1;
+       int[] res = new int[n];
+        for(int i = 0; i<n;i++){
+             
+            if(nums[i] > pivot){
+               res[r] = nums[i];
+               r--;
+            }
+            else if(nums[i] < pivot){
+                res[l]= nums[i];
+                l++;
+            }
+          
+        }
+        // it check the pivot in the array
+        while(l<=r){
+            res[l] = pivot;
+            l++;
+        }
+        // after pivot we need to maintain the ascending order so i swap the element acording their posiont 
+        int start = r + 1, end = n - 1;
+        while (start < end) {
+            int temp = res[start];
+            res[start] = res[end];
+            res[end] = temp;
+            start++;
+            end--;
+        }
+        return res;
+
+    }
+}
+
 Time & Space Complexity
 
 Time Complexity: O(n), since we iterate through the array multiple times.
