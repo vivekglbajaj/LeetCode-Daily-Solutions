@@ -1,0 +1,66 @@
+Pivot Array Implementation
+
+Overview
+
+This program partitions an array around a given pivot while maintaining relative ordering. The goal is to:
+
+Move elements less than the pivot to the left.
+
+Place pivot elements in the middle.
+
+Move elements greater than the pivot to the right while preserving their relative order.
+
+Algorithm
+
+The approach follows these steps:
+
+Initialize Pointers:
+
+l (left pointer) starts at 0 to place smaller elements.
+
+r (right pointer) starts at n-1 to place larger elements.
+
+Iterate Through the Array:
+
+If an element is less than pivot, place it at res[l] and increment l.
+
+If an element is greater than pivot, place it at res[r] and decrement r.
+
+Place Pivot Elements:
+
+Fill the range [l, r] with the pivot.
+
+Sort the Elements Greater than Pivot:
+
+Reverse the elements placed at the right side to maintain ascending order.
+
+Time & Space Complexity
+
+Time Complexity: O(n), since we iterate through the array multiple times.
+
+Space Complexity: O(n), as we use an additional array res[].
+
+Example
+
+Input:
+
+nums = [9, 12, 5, 10, 14, 3, 10], pivot = 10
+
+Output:
+
+[9, 5, 3, 10, 10, 12, 14]
+
+Edge Cases Considered
+
+Array contains only one element
+
+All elements are greater or smaller than pivot
+
+Array has multiple pivot occurrences
+
+Already sorted array
+
+Improvements
+
+The current approach uses extra space (O(n)). It can be optimized further using in-place modifications to achieve O(1) space complexity.
+
