@@ -1,0 +1,58 @@
+Colored Cells Problem Solution
+
+Problem Statement
+
+Given an integer n, determine the number of cells in an n x n grid where the center is filled first, and in each subsequent step, additional layers are added around it.
+
+Approach
+
+The problem follows a pattern where each new layer adds more cells to the previous total. The formula for counting cells at each step is derived as:
+
+At n = 1, only 1 cell is present.
+
+For n > 1, each new step adds 4 * (n - 1) additional cells.
+
+This results in the following sum:
+
+Total cells = 1 + 4 * (1) + 4 * (2) + ... + 4 * (n-1)
+
+This can be efficiently implemented using a loop.
+
+Solution Implementation
+
+class Solution {
+    public long coloredCells(int n) {
+        if(n == 1) return 1;
+        long sum = 1;
+        for(int i = 1; i < n; i++) {
+            sum += 4 * i;
+        }
+        return sum;
+    }
+}
+
+Complexity Analysis
+
+The loop runs for n-1 iterations.
+
+Each iteration performs a constant-time operation.
+
+Therefore, the time complexity is O(n).
+
+Example Walkthrough
+
+Example 1:
+
+Input: n = 1
+Output: 1
+
+Example 2:
+
+Input: n = 2
+Output: 5
+
+Example 3:
+
+Input: n = 3
+Output: 13
+
