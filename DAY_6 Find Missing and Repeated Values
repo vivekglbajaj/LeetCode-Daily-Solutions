@@ -1,0 +1,42 @@
+Find Missing and Repeated Values in a Grid
+Problem Statement
+Given an n × n grid where numbers range from 1 to n², exactly one number is missing, and one number is repeated. Your task is to find the missing and repeated numbers.
+
+Approach
+This solution uses a boolean array to track occurrences of numbers.
+
+Create a boolean array (res) of size n² + 1 to track seen numbers.
+Traverse the grid, marking numbers in res.
+If a number is already marked, it is the repeated number.
+Find the missing number by checking which index in res remains false.
+Time Complexity Analysis
+O(n²) for traversing the n × n grid.
+O(n²) for checking the missing number.
+Overall Complexity: O(n²) (Optimal for this problem).
+Solution:
+class Solution {
+    public int[] findMissingAndRepeatedValues(int[][] grid) {
+        int n = grid.length;
+        int total = n*n;
+        boolean[] res = new boolean[total+1];
+        int repeat = -1,missing = -1;
+        for(int i = 0; i<n;i++){
+            for(int j = 0; j<n;j++){
+                int num = grid[i][j];
+                if(res[num]){
+                    repeat = num;
+                }
+                res[num] = true;
+               
+            }
+    
+        }
+        for(int i = 1; i<=total;i++){
+            if(!res[i]){
+                missing = i;
+                break;
+            }
+        }
+        return new int[]{repeat,missing};
+    }
+}
